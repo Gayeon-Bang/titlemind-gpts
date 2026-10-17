@@ -1,0 +1,85 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "YouTube 검색 API",
+    "description": "사용자 키워드를 기반으로 유튜브 영상 제목을 수집하기 위한 OpenAPI 3.1.0 스키마",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://serpapi.com"
+    }
+  ],
+  "paths": {
+    "/search.json": {
+      "get": {
+        "summary": "YouTube 검색 결과 조회",
+        "operationId": "getYouTubeSearchResults",
+        "parameters": [
+          {
+            "name": "engine",
+            "in": "query",
+            "description": "사용할 검색 엔진 이름 (고정값: youtube)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "youtube"
+              ]
+            }
+          },
+          {
+            "name": "search_query",
+            "in": "query",
+            "description": "유튜브 검색 키워드",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "gl",
+            "in": "query",
+            "description": "검색 결과에 사용할 국가 코드 (예: us, kr 등)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "hl",
+            "in": "query",
+            "description": "검색 결과에 사용할 언어 코드 (예: en, ko 등)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "sp",
+            "in": "query",
+            "description": "검색 결과 필터 또는 페이지 토큰",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "no_cache",
+            "in": "query",
+            "description": "캐시 결과 사용 여부 (true: 강제 새 검색)",
+            "required": false,
+            "schema": {
+              "type": "boolean"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "성공적으로 유튜브 검색 결과를 가져옴"
+          }
+        }
+      }
+    }
+  }
+}
